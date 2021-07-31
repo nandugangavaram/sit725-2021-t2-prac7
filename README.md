@@ -1,17 +1,12 @@
-Hello by Alessio:
+# sit725-2021-t2-prac3
 
-This is my boilerplate for creating simple new applications. 
-This boilerplate is very basic and should be used as a training ground
+# Indian Cookery
+    This project is about providing people who are craving to try indian food can go through the available receipes or 
+    can even post new recipes on their own, sharing their own receipes with never tried before incrediants which taste good.
 
-It comprises of 
-Jquery for advanced manipulations
-Materialize for the UI interface
-Socket IO for real time comunications
+Install all the dependencies by running `npm install`.
 
-
-After installing, run the server using
-
-    npm start
+After installing, run the server using `npm start`.
 
 
 
@@ -35,53 +30,17 @@ browser:
 
     http://localhost:8080/
 
-Next, test it by visiting the following URL in your
-browser:
-
-    http://localhost:8080/hello
-
-When you visit the above url the content will be Hello World
-
-    Hello World
-
-
-
 
 files in this repository
 --------------------------------------------------------------------------------
 
 `server.js`
 
-The server written with node.js.  This server was adapted from the
-*[example provided in the node docs](http://nodejs.org/api/synopsis.html)*.
-
-The difference is that the port, binding host, and url are determined
-via the [`cfenv` package](https://www.npmjs.org/package/cfenv).  This will
-return appropriate values both when running in Cloud Foundry and when running
-locally.
-
----
-
-`.cfignore`
-
-List of file patterns that should **NOT** be uploaded to Bluemix.
-
-See the Cloud Foundry doc
-*[Prepare to Deploy an Application](http://docs.cloudfoundry.org/devguide/deploy-apps/prepare-to-deploy.html)*
-for more information.
+The server written with node.js.  
 
 In this case, the contents of the file are:
 
     node_modules
-
-This indicates the node modules you installed with `npm install` will **NOT** be
-uploaded to Bluemix.  When your app is "staged" (ie, built on Bluemix during
-`cf push`), an
-`npm install` will be run there to install the required modules.  By avoiding
-sending your node modules when you push your app, your app will be uploaded
-quicker than
-if you **HAD** sent the modules.  But you can send the modules you have installed
-if you like; just delete the `.cfignore` file.
 
 ---
 
@@ -105,12 +64,6 @@ The open source license for this sample; in this case, it's licensed under
 
 `manifest.yml`
 
-This file contains information that's used when you `cf push` the application.
-
-See the Cloud Foundry doc
-*[Deploying with Application Manifests](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)*
-for more information.
-
 ---
 
 `package.json`
@@ -127,25 +80,9 @@ for more information.
 
 ---
 
-`Procfile`
-
-Used to indicate the command to start the server.
-
-See the Cloud Foundry doc
-*[Tips for Node.js Applications](http://docs.cloudfoundry.org/buildpacks/node/node-tips.html)*
-and the Heroku doc
-*[Process Types and the Procfile](https://devcenter.heroku.com/articles/procfile)*
-for more information.
-
 In this case, the file has a single line:
 
     web: node server
 
 This indicates that the command `node server` should be run when the app is
 started.
-
----
-
-`README.md`
-
-This file!
