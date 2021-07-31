@@ -2,25 +2,22 @@
   width: 200px;
 }
 
-.title{
-  color: white;
+.title {
+  color: black;
 }
-.mainText{
-  color:white;
+.mainText {
+  color: black;
 }
 
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: #B783C3;
-
 }
 
-.page-footer{
-  background-color: #9E65A9;
+.page-footer {
+  background-color: #5b64e0;
 }
 main {
   flex: 1 0 auto;
 }
-    
