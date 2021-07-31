@@ -29,6 +29,7 @@ main {
   width: 50px;
   margin-top: 5px;
   margin-bottom: -15px;
+  padding: 15%;
   overflow: hidden;
 }
 
