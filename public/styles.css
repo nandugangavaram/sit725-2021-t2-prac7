@@ -4,6 +4,8 @@
 
 .title {
   color: black;
+  font-weight: bold;
+  font-family: cursive;
 }
 .mainText {
   color: black;
@@ -17,7 +19,29 @@ body {
 
 .page-footer {
   background-color: #5b64e0;
+  padding: 15px;
 }
 main {
   flex: 1 0 auto;
+}
+.twitter-logo {
+  max-height: 50px;
+  width: 50px;
+  margin-top: 5px;
+  margin-bottom: -15px;
+  overflow: hidden;
+}
+
+.navClass {
+  height: 75;
+}
+
+.card-image {
+  min-width:200;
+  min-height: 200px;
+  max-width:200;
+  max-height: 200px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }

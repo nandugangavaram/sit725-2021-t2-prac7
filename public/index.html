@@ -19,21 +19,23 @@
 
 <body>
     <header>
-        <nav>
-            <div class="nav-wrapper row" style=" background-color: rgb(62, 62, 214)">
+        <nav class="navClass">
+            <div class="nav-wrapper row" style="background-color: rgb(62, 62, 214)">
                 <div class="left col s1">
                     <a href="#" class="brand-logo" style="height: 100%;">
-                        <img src="assets/ale.jpg" alt="" class="circle responsive-img"
-                            style="height: 100%;padding-top: 5px; padding-left: 15px;">
-                        <!-- notice the "circle" class -->
+                        <!-- <img src="assets/ale.jpg" alt="" class="circle responsive-img"
+                            style="height: 100%;padding-top: 5px; padding-left: 15px;"> -->
+                        <i class="material-icons circle responsive-img">restaurant</i>
                     </a>
                 </div>
-                <ul class="left col">
+                <ul class="left col s3">
                     <li class="active"><a href="#"> Home </a></li>
                     <li><a href="#"> About </a></li>
                 </ul>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="https://twitter.com/Nandu2593">Twitter</a></li>
+                <ul id="nav-mobile" class="right hide-on-med-and-down col">
+                    <li><a href="https://twitter.com/Nandu2593" target="_blank"><img src="assets/twitter-logo.png"
+                                alt="Twitter" class="twitter-logo responsive-img"></a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -44,6 +46,64 @@
 
             <div class="fixed-action-btn"> -
                 <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+            </div>
+        </div>
+
+        <div id="Receipes" class="row">
+            <div class="col s12 l6">
+                <div class="card">
+                    <h2 class="header center">Receipe 1</h2>
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="https://lorempixel.com/200/200/food" class="Receipe-img">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p>Brief Description about the food.</p>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-light btn right" href="#">Try it!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l6">
+                <div class="card">
+                    <h2 class="header center">Receipe 2</h2>
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="https://lorempixel.com/200/200/food" class="Receipe-img">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p>Brief Description about the food.</p>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-light btn right" href="#">Try it!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 l6">
+                <div class="card">
+                    <h2 class="header center">Receipe 3</h2>
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="https://lorempixel.com/200/200/food" class="Receipe-img">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p>Brief Description about the food.</p>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-light btn right" href="#">Try it!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
