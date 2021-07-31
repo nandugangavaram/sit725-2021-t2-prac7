@@ -10,7 +10,9 @@
 .mainText {
   color: black;
 }
-
+p{
+  color:black;
+}
 body {
   display: flex;
   min-height: 100vh;
@@ -45,4 +47,14 @@ main {
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+.profile-pic {
+  max-height: 350px;
+  max-width: 350px;
+  clip-path: circle();
+}
+
+.profile-info {
+  font-weight: bold;
 }
