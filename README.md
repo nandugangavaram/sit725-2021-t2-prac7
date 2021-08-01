@@ -1,8 +1,8 @@
 # sit725-2021-t2-prac3
 
 # Indian Cookery
-    This project is about providing people who are craving to try indian food can go through the available receipes or 
-    can even post new recipes on their own, sharing their own receipes with never tried before incrediants which taste good.
+    This project is about providing people who are craving to try indian food can go through the available recipes or 
+    can even post new recipes on their own, sharing their own recipes with never tried before incrediants which taste good.
 
 Install all the dependencies by running `npm install`.
 

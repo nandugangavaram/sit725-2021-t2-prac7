@@ -1,6 +1,6 @@
 var generatePosts = (items) => {
   
-  let receipes = document.getElementById("Receipes");
+  let recipes = document.getElementById("Recipes");
 
   for(let i=0;i<items;i++) {
 
@@ -13,7 +13,7 @@ var generatePosts = (items) => {
     
       let header = document.createElement("h2");
       header.className = "heander center";
-      header.innerHTML = "Receipe" + (i+1);
+      header.innerHTML = "Recipe" + (i+1);
       card.appendChild(header);
       
       let cardHorizontal = document.createElement("div");
@@ -26,7 +26,7 @@ var generatePosts = (items) => {
     
       let image = document.createElement("img");
       image.src = "https://lorempixel.com/200/200/food";
-      image.className = "Receipe-img";
+      image.className = "Recipe-img";
       cardImage.appendChild(image);
     
       let cardStacked = document.createElement("div");
@@ -51,7 +51,7 @@ var generatePosts = (items) => {
       tryButton.innerHTML = "Try it!";
       cardAction.appendChild(tryButton);
     
-      receipes.appendChild(column);    
+      recipes.appendChild(column);    
   }
 };
 
