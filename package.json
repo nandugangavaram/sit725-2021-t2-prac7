@@ -1,5 +1,5 @@
 {
-  "name": "bluemix-hello-node",
+  "name": "sit725-2021-t2-prac3",
   "version": "0.0.0",
   "dependencies": {
     "cf-deployment-tracker-client": "*",
@@ -16,6 +16,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBM-Bluemix/bluemix-hello-node.git"
+    "url": "https://github.com/nandugangavaram/sit725-2021-t2-prac3.git"
   }
 }
