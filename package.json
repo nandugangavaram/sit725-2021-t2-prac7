@@ -4,6 +4,7 @@
   "dependencies": {
     "cf-deployment-tracker-client": "*",
     "commander": "^2.6.0",
+    "dotenv": "^10.0.0",
     "express": "^4.14.1",
     "http-post": "^0.1.1",
     "http-proxy": "^1.8.1",
@@ -17,5 +18,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/nandugangavaram/sit725-2021-t2-prac4.git"
-  }
+  },
+  "license": "MIT license"
 }
