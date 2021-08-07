@@ -46,8 +46,55 @@
         <div class="container">
             <h1 class="title center">Indian Cookery</h1>
 
+            <h3 class="noposts center hide">No Posts found add new posts.</h3>
+
             <div class="fixed-action-btn"> -
-                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light red  modal-trigger" href="#addItemModal"><i
+                        class="material-icons">add</i></a>
+            </div>
+            <!-- Modal Structure -->
+            <div id="addItemModal" class="modal">
+                <div class="modal-content">
+                    <h4>Add Recipe</h4>
+                </div>
+                <div class="row modal-content">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="Title" id="title" type="text" class="validate">
+                                <label for="title">Title</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="Image Link" id="image_url" type="text" class="validate">
+                                <label for="image">Image URL</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Description" id="description" type="text" class="validate">
+                                <label for="Description">Description</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Brief_Description" id="brief_description" type="text"
+                                    class="validate">
+                                <label for="brief_description">Brief Description</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Video_Link" id="video_url" type="text" class="validate">
+                                <label for="video_url">Video URL</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 center-align">
+                                <a class="waves-effect waves-light btn" id="formSubmit">submit</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 

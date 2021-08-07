@@ -9,7 +9,7 @@ const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: 
 let http = require("http").createServer(app);
 let io = require("socket.io")(http);
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 5500;
 
 app.use(express.static(__dirname + "/public"));
 

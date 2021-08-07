@@ -58,3 +58,13 @@ main {
 .profile-info {
   font-weight: bold;
 }
+
+.Recipe-img {  
+  min-width:200;
+  min-height: 200px;
+  max-width:200;
+  max-height: 200px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
