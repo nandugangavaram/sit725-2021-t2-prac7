@@ -91,7 +91,7 @@ $(document).ready(function(){
   
   $('.modal').modal();
 
-  if(posts.length < 0) {
+  if(posts.length > 0) {
     generatePosts(posts);
   } else {
     $('.noposts')[0].className = "noposts center";
