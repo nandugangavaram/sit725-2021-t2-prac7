@@ -1,3 +1,4 @@
+
 const posts = [
   {
       title: "Recipe 1",
@@ -77,10 +78,27 @@ const submitForm = () => {
   formData.brief_description = $('#brief_description').val();
   formData.video_url = $('#video_url').val();
 
+  
+  $('#title').val('');
+  $('#image_url').val('');
+  $('#description').val('');
+  $('#brief_description').val('');
+  $('#video_url').val('');
+  $('.modal').modal('close');
+
+  $.ajax({
+      url: "/addRecipe",
+      data: formData,
+      type: "POST",
+    success: (result) => {
+        $('.modal').closeModal();
+      }
+    });
+    
   let post = [formData];
   generatePosts(post);
   $('.noposts')[0].className = "noposts center hide";
-  console.log("Form Data Submitted: ", formData, formData);
+  console.log("Form Data Submitted: ", formData);
 }
 
 $(document).ready(function(){  
@@ -91,9 +109,13 @@ $(document).ready(function(){
   
   $('.modal').modal();
 
-  if(posts.length > 0) {
-    generatePosts(posts);
-  } else {
-    $('.noposts')[0].className = "noposts center";
-  }
+  $.ajax({
+    url: "/posts",
+    type: "GET",
+    success: (result) => {
+      generatePosts(result.data);
+      // location.reload();
+    }
+  });
+
 });
