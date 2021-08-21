@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use('/', projectsRoute);
 
+//Initial Server Load
 app.listen(port, () => {
   console.log("Listening on port ", port);
   client.createCollection("Recipes");

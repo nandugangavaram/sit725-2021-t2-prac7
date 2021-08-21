@@ -3,6 +3,7 @@ var projectsCollection;
 let collection = "Recipes";
 projectsCollection = client.mongodbClient.db().collection(collection);
 
+//inserting Recipe to DB function
 const insertRecipe = (req, res) => {
     var newRecipe = req.body;
     projectsCollection.insertOne(newRecipe, (err, result) => {
@@ -14,8 +15,8 @@ const insertRecipe = (req, res) => {
     });
 }
 
+//Get Recipes from DB function
 const getRecipes = (res) => {    
-    console.log("Get Recipes Services");
     projectsCollection.find().toArray((err, result) => {
         if(err) {
         res.json({status: 400, message:err});
