@@ -1,4 +1,4 @@
 module.exports = {
-    addRecipeController: "./addRecipeController", 
-    postsController: "./postsController"
+    addRecipeController: require("./addRecipeController"), 
+    postsController: require("./postsController")
 }

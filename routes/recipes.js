@@ -1,9 +1,9 @@
 var express =  require('express');
 var router = express.Router();
-var controllers = require('../controller');
+var controllers = require('../controllers');
 
 router.post("/addRecipe", (req, res) => {
-    controllers.AddRecipeController.addRecipe(req, res);
+    controllers.addRecipeController.addRecipe(req, res);
     // var newRecipe = req.body;
     // insertRecipe(newRecipe, (err, result) => {
     //     if(err) {
@@ -15,7 +15,8 @@ router.post("/addRecipe", (req, res) => {
 });
   
 router.get("/posts", (req, res) => {
-    controllers.AddRecipeController.getRecipes(req, res);
+    console.log("GET POSTS Method Routes");
+    controllers.postsController.getRecipes(req, res);
     // getRecipes((err, result) => {
     //     if(err) {
     //     res.json({status: 400, message:err});

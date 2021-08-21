@@ -11,4 +11,4 @@ const getRecipes = (req, res) => {
     });
 }
 
-module.exports = getRecipes;
+module.exports = {getRecipes};
