@@ -3,6 +3,7 @@ var router = express.Router();
 var controllers = require('../controllers');
 
 router.post("/addRecipe", (req, res) => {
+    console.log("ADD POST Method Routes");
     controllers.addRecipeController.addRecipe(req, res);
     // var newRecipe = req.body;
     // insertRecipe(newRecipe, (err, result) => {

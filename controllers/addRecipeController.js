@@ -12,4 +12,4 @@ const addRecipe = (req, res) => {
     });
 }
 
-module.exports = addRecipe;
+module.exports = {addRecipe};
