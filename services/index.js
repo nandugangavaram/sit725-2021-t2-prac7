@@ -1,3 +1,3 @@
 module.exports = {
-    recipesServices: require('recipesServices')
+    recipesServices: require('./recipesServices')
 }
