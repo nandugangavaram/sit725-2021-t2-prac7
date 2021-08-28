@@ -50,8 +50,6 @@ describe("Adding a recipe and verifying update", function() {
                 url: 'http://localhost:8080/addRecipe',
                 body: formData,
                 json: true
-              }, function(error, response, body){
-                console.log(body);
               });
 
             request(url, function(req, res) {

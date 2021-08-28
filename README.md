@@ -31,7 +31,7 @@ browser:
     http://localhost:8080/
 
 
-files in this repository
+## Files in this repository
 --------------------------------------------------------------------------------
 
 `server.js`
@@ -86,3 +86,10 @@ In this case, the file has a single line:
 
 This indicates that the command `node server` should be run when the app is
 started.
+
+## Running Test cases
+-------------------------------------------------------------------------------
+
+In order to run test cases, and see the results run the below command in the terminal:
+
+`npm run test`
