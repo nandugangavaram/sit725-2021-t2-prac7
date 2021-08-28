@@ -1,5 +1,5 @@
 {
-  "name": "sit725-2021-t2-prac5",
+  "name": "sit725-2021-t2-prac6",
   "version": "0.0.0",
   "dependencies": {
     "cf-deployment-tracker-client": "*",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nandugangavaram/sit725-2021-t2-prac5.git"
+    "url": "https://github.com/nandugangavaram/sit725-2021-t2-prac6.git"
   },
   "license": "MIT license"
 }
