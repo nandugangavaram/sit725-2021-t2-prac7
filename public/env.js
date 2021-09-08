@@ -1,4 +1,21 @@
 
+// Connection to Socket
+let socket = io();
+
+socket.on('dateTime', (msg) => {
+  let currentdate = new Date(); 
+  console.log(msg + currentdate.getDate() + "/"
+  + (currentdate.getMonth()+1)  + "/" 
+  + currentdate.getFullYear() + " @ "  
+  + currentdate.getHours() + ":"  
+  + currentdate.getMinutes() + ":" 
+  + currentdate.getSeconds());
+});
+
+socket.on('message', (msg) => {
+  console.log("Broadcast Message: "+ msg);
+});
+
 const posts = [
   {
       title: "Recipe 1",
@@ -91,10 +108,12 @@ const submitForm = () => {
       data: formData,
       type: "POST",
     success: (result) => {
-        $('.modal').closeModal();
+        let modalInstance = M.Modal.getInstance($(".modal"));
+        modalInstance.close();
       }
     });
     
+  socket.emit("Broadcast", "A User Added a Post!");
   let post = [formData];
   generatePosts(post);
   $('.noposts')[0].className = "noposts center hide";
