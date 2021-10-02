@@ -102,6 +102,57 @@ const viewRecipe = (event) => {
   $('#videoFrame').attr('src', embeddedUrl);
 }
 
+const updateRecipe = () => {
+  let RecipeID = selectedRecipe._id;
+  let recipeDetails = {
+    id: RecipeID,      
+    brief_description: $('#viewRecipeBriefDescription').val(),
+    description: $('#viewRecipeDescription').val(),
+    video_url: $('#viewRecipeVideo_url').val( )
+  }
+
+  $.ajax({
+    url: "/updatePost",
+    type: "PUT",
+    data: recipeDetails, 
+    success: (result) => {
+      swal("Recipe Details Updated successfully!", {
+        icon: "success",
+        buttons: false
+      });
+      setTimeout(() => location.reload(), 1000);
+    }
+  });
+}
+const deleteRecipe = () => {
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this Recipe!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        let RecipeID = selectedRecipe._id;
+        let recipeDetails = {
+          id: RecipeID
+        }
+
+        $.ajax({
+          url: "/deletePost",
+          type: "DELETE",
+          data: recipeDetails, 
+          success: (result) => {
+            swal("Recipe Deleted successfully!", {
+              icon: "success",
+              buttons: false
+            });
+            setTimeout(() => location.reload(), 1000);
+          }
+        });
+      }
+    })
+}
 const submitForm = () => {
   let formData = {};
   formData.title = $('#title').val();
@@ -160,58 +211,12 @@ $(document).ready(function(){
 
   $('#updateRecipe').click((event) => {
     event.preventDefault();
-
-    let RecipeID = selectedRecipe._id;
-    let recipeDetails = {
-      id: RecipeID,      
-      brief_description: $('#viewRecipeBriefDescription').val(),
-      description: $('#viewRecipeDescription').val(),
-      video_url: $('#viewRecipeVideo_url').val( )
-    }
-
-    $.ajax({
-      url: "/updatePost",
-      type: "PUT",
-      data: recipeDetails, 
-      success: (result) => {
-        swal("Recipe Details Updated successfully!", {
-          icon: "success",
-          buttons: false
-        });
-        setTimeout(() => location.reload(), 1000);
-      }
-    });
+    updateRecipe();
   })
 
   $('#deleteRecipe').click((event) => {
     event.preventDefault();
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this Recipe!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-      }).then((willDelete) => {
-        if (willDelete) {
-          let RecipeID = selectedRecipe._id;
-          let recipeDetails = {
-            id: RecipeID
-          }
-
-          $.ajax({
-            url: "/deletePost",
-            type: "DELETE",
-            data: recipeDetails, 
-            success: (result) => {
-              swal("Recipe Deleted successfully!", {
-                icon: "success",
-                buttons: false
-              });
-              setTimeout(() => location.reload(), 1000);
-            }
-          });
-        }
-      })
+    deleteRecipe();
   });
 
   $('.card-alert > button').on('click', function(){
