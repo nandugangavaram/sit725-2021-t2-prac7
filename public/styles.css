@@ -40,10 +40,10 @@ main {
 }
 
 .card-image {
-  min-width:200;
+  min-width:200px;
   min-height: 200px;
-  max-width:200;
-  max-height: 200px;
+  max-width: 300px !important;
+  max-height: 200px !important;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -60,11 +60,30 @@ main {
 }
 
 .Recipe-img {  
-  min-width:200;
+  min-width:200px;
   min-height: 200px;
-  max-width:200;
-  max-height: 200px;
+  max-width: 300px !important;
+  max-height: 200px !important;
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+.card-alert button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #fff;
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  color: inherit;
+}
+.card-alert a{
+  color: inherit;
+  font-weight: 500;
+}
+.card-alert a:hover{
+  color: inherit;
+  text-decoration: underline;
 }

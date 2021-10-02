@@ -1,5 +1,5 @@
 require("dotenv").config();
-let client = require("./dbConnect");
+const mongo = require('./dbconnect')
 let express = require("express");
 let app = express();
 
@@ -34,8 +34,10 @@ io.on('connection', (socket) => {
   });
 });
 
+// Connect to mongo
+mongo();
+
 //Initial Server Load
 server.listen(port, () => {
   console.log("Listening on port ", port);
-  client.createCollection("Recipes");
 });

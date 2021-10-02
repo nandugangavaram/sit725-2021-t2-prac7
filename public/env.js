@@ -1,6 +1,7 @@
 
 // Connection to Socket
 let socket = io();
+var userRecipes;
 
 socket.on('dateTime', (msg) => {
   let currentdate = new Date(); 
@@ -15,21 +16,6 @@ socket.on('dateTime', (msg) => {
 socket.on('message', (msg) => {
   console.log("Broadcast Message: "+ msg);
 });
-
-const posts = [
-  {
-      title: "Recipe 1",
-      image_url: "https://picsum.photos/200/300.jpg",
-      brief_description: "Random Recipe",
-      video_url: "video_url"
-  },
-  {
-      title: "Recipe 2",
-      image_url: "https://picsum.photos/200/300.jpg",
-      brief_description: "Random Recipe",
-      video_url: "video_url"
-  }
-]
 
 var generatePosts = (newPosts) => {
   newPosts.forEach(function (post) {
@@ -77,8 +63,8 @@ var generatePosts = (newPosts) => {
     cardStacked.appendChild(cardAction);
     
     let tryButton = document.createElement("a");
-    tryButton.className = "waves-effect waves-light btn right";
-    tryButton.href = "#";
+    tryButton.className = "modal-trigger waves-effect waves-light btn right";
+    tryButton.href = "#viewRecipeModal";
     tryButton.innerHTML = "Try it!";
     cardAction.appendChild(tryButton);
 
@@ -95,29 +81,37 @@ const submitForm = () => {
   formData.brief_description = $('#brief_description').val();
   formData.video_url = $('#video_url').val();
 
-  
-  $('#title').val('');
-  $('#image_url').val('');
-  $('#description').val('');
-  $('#brief_description').val('');
-  $('#video_url').val('');
-  $('.modal').modal('close');
+  let { title, image_url, description, brief_description, video_url } = formData;
 
-  $.ajax({
-      url: "/addRecipe",
-      data: formData,
-      type: "POST",
-    success: (result) => {
-        let modalInstance = M.Modal.getInstance($(".modal"));
-        modalInstance.close();
-      }
-    });
-    
-  socket.emit("Broadcast", "A User Added a Post!");
-  let post = [formData];
-  generatePosts(post);
-  $('.noposts')[0].className = "noposts center hide";
-  console.log("Form Data Submitted: ", formData);
+  if(!title || !image_url|| !description|| !brief_description|| !video_url) {
+    if($('#message').hasClass('hide')) {
+      $('#message').removeClass('hide');
+    }
+    $('.message-content')[0].innerHTML = "Fill in all the details!";
+  } else {    
+    $('#title').val('');
+    $('#image_url').val('');
+    $('#description').val('');
+    $('#brief_description').val('');
+    $('#video_url').val('');
+    $('.modal').modal('close');
+  
+    $.ajax({
+        url: "/addRecipe",
+        data: formData,
+        type: "POST",
+      success: (result) => {
+          let modalInstance = M.Modal.getInstance($(".modal"));
+          modalInstance.close();
+        }
+      });
+      
+    socket.emit("Broadcast", "A User Added a Post!");
+    let post = [formData];
+    generatePosts(post);
+    $('.noposts')[0].className = "noposts center hide";
+    console.log("Form Data Submitted: ", formData);
+  }
 }
 
 $(document).ready(function(){  
@@ -127,11 +121,20 @@ $(document).ready(function(){
   });
   
   $('.modal').modal();
+  $('#viewRecipeModal').modal();
+
+  $('.card-alert > button').on('click', function(){
+    if(!$('#message').hasClass('hide')) {
+      $('#message').addClass('hide');
+    }
+    $(this).closest('div.card-alert').fadeOut('slow');
+  })
 
   $.ajax({
     url: "/posts",
     type: "GET",
     success: (result) => {
+      userRecipes = result.data;
       generatePosts(result.data);
       // location.reload();
     }

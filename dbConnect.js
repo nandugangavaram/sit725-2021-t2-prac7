@@ -1,25 +1,17 @@
-let express = require("express");
-const MongoClient = require("mongodb").MongoClient;
+const mongoose = require('mongoose');
 
-var projectCollection;
+// DB config
+const db = require('./config/keys').MongoURI
 
-//DB Connect
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@sit725-2021-t2-prac4.mkubz.mongodb.net/IndianCookery?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+// Connect to mongo
+const mongo = async () => {
+    await mongoose.connect(db, { useNewUrlParser: true })
+        .then(() => console.log('MongoDB connected....'))
+        .catch(err => console.log(err))
+}
 
-//Connect/Create Collection DB in MongoDB
-const createCollection = (collection) => {
-    client.connect(err => {
-        projectCollection = client.db().collection(collection);
-        // perform actions on the collection object
-        if(err) {
-        console.log("DB CONNECTION FAILED!");
-        process.exit(1);
-        } else {
-        console.log("DB CONNECTED SUCCESSFULLY");
-        }
-    });
-};  
+const close = () => {
+    mongoose.disconnect()
+}
 
-module.exports = {createCollection, mongodbClient: client};
-  
+module.exports =  mongo, close;

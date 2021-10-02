@@ -58,6 +58,14 @@
                     <h4>Add Recipe</h4>
                 </div>
                 <div class="row modal-content">
+                    <div id="message" class="card-alert card red lighten-5 hide">
+                        <div class="card-content red-text">
+                            <span class="message-content"></span>
+                        </div>
+                        <button type="button" class="close red-text" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s6">
@@ -96,6 +104,37 @@
                     </form>
                 </div>
             </div>
+
+            <!-- Modal Structure -->
+            <div id="viewRecipeModal" class="modal">
+                <div class="modal-content">
+                    <h4 id="viewRecipeTitle"></h4>
+                </div>
+                <div class="row modal-content">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Description" id="description" type="text" class="validate">
+                                <label for="Description">Description</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Video_Link" id="video_url" type="text" class="validate">
+                                <label for="video_url">Video URL</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 right-align">
+                                <a class="waves-effect waves-light btn" id="updateRecipe">Update</a>
+                            </div>
+                            <div class="input-field col s6">
+                                <a class="waves-effect waves-light btn" id="deleteRecipe">Delete</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div id="Recipes" class="row"> </div>
@@ -112,7 +151,7 @@
     <!-- socket IO Served by the server -->
     <script src="/socket.io/socket.io.js"></script>
 
-    <!-- jQuery (necessary for Bootstrap' s JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootsap' s JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
