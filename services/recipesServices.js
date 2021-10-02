@@ -28,7 +28,23 @@ const getRecipes = (req, res) => {
         .catch(err => console.log(err));
 }
 
+//Update Recipe Service
+const updateRecipeService = (req, res) => {    
+    console.log(req.body)
+    let { id, description, video_url } = req.body;
+    Recipes.findOneAndUpdate({_id: id}, {$set: { description, video_url}})
+        .then(records => {
+            if(!records) {
+                res.json({status: 400, message:"No Recipes Found!"});
+            } else {
+                res.json({statusCode: 200, message:"Success", data: records});
+            }
+        })        
+        .catch(err => console.log(err));
+}
+
 module.exports = {
     insertRecipe, 
-    getRecipes
+    getRecipes,
+    updateRecipeService
 }

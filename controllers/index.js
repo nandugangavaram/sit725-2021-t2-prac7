@@ -1,4 +1,5 @@
 module.exports = {
     addRecipeController: require("./addRecipeController"), 
-    postsController: require("./postsController")
+    postsController: require("./postsController"), 
+    updateRecipeController: require("./updateRecipeController")
 }

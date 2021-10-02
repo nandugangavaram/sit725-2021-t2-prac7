@@ -10,6 +10,7 @@
     <!-- Compiled and minified CSS -->
     <!-- Materialze-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Materialize icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -108,20 +109,25 @@
             <!-- Modal Structure -->
             <div id="viewRecipeModal" class="modal">
                 <div class="modal-content">
-                    <h4 id="viewRecipeTitle"></h4>
+                    <h3 id="viewRecipeTitle" class="center"></h3>
                 </div>
                 <div class="row modal-content">
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="Description" id="description" type="text" class="validate">
-                                <label for="Description">Description</label>
+                                <input placeholder="Description" id="viewRecipeDescription" type="text"
+                                    class="validate">
+                                <label for="viewRecipeDescription">Description</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="Video_Link" id="video_url" type="text" class="validate">
-                                <label for="video_url">Video URL</label>
+                                <input placeholder="Video_Link" id="viewRecipeVideo_url" type="text" class="validate">
+                                <label for="viewRecipeVideo_url">Video URL</label>
+                            </div>
+                            <div class="center">
+                                <iframe id="videoFrame" width="400" height="320" src="">
+                                </iframe>
                             </div>
                         </div>
                         <div class="row">

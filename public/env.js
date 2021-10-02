@@ -1,7 +1,7 @@
-
 // Connection to Socket
 let socket = io();
 var userRecipes;
+var selectedRecipe;
 
 socket.on('dateTime', (msg) => {
   let currentdate = new Date(); 
@@ -18,11 +18,14 @@ socket.on('message', (msg) => {
 });
 
 var generatePosts = (newPosts) => {
+  let noOfRecipes = $('.Recipe').length;
+  let RecipeIDs = $('.Recipe').length;
   newPosts.forEach(function (post) {
     let recipes = document.getElementById("Recipes");
 
     let column = document.createElement("div");
-    column.className = "col s12 l6";
+    column.className = "col s12 l6 Recipe";
+    column.id = ++RecipeIDs;
 
     let card = document.createElement("div");
     card.className = "card";
@@ -63,15 +66,40 @@ var generatePosts = (newPosts) => {
     cardStacked.appendChild(cardAction);
     
     let tryButton = document.createElement("a");
-    tryButton.className = "modal-trigger waves-effect waves-light btn right";
+    tryButton.className = "modal-trigger waves-effect waves-light btn right viewRecipe";
     tryButton.href = "#viewRecipeModal";
     tryButton.innerHTML = "Try it!";
+
     cardAction.appendChild(tryButton);
 
     recipes.appendChild(column); 
   });
+
+  if(noOfRecipes == 0) {
+    var s = document.createElement( 'script' );
+    var inlineCode = document.createTextNode(`$('.viewRecipe').click(function (event) {
+      event.preventDefault();
+      viewRecipe(event);
+    })` );
+    s.appendChild(inlineCode);
+    $('.Recipe').append(s);
+  }
+
 };
 
+const viewRecipe = (event) => {
+  let selectedRecipePos = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.id - 1;
+  selectedRecipe = userRecipes[selectedRecipePos]
+
+  $('#viewRecipeTitle')[0].innerHTML = selectedRecipe.title;
+  $('#viewRecipeDescription').val(selectedRecipe.description);
+  $('#viewRecipeVideo_url').val(selectedRecipe.video_url);
+
+  let video_url = selectedRecipe.video_url;
+  var videoID = video_url.split("=")[1];
+  var embeddedUrl = "https://www.youtube.com/embed/"+videoID;
+  $('#videoFrame').attr('src', embeddedUrl);
+}
 
 const submitForm = () => {
   let formData = {};
@@ -122,6 +150,30 @@ $(document).ready(function(){
   
   $('.modal').modal();
   $('#viewRecipeModal').modal();
+
+  $('#updateRecipe').click((event) => {
+    event.preventDefault();
+    
+    let RecipeID = selectedRecipe._id;
+    let recipeDetails = {
+      id: RecipeID,
+      description: $('#viewRecipeDescription').val(),
+      video_url: $('#viewRecipeVideo_url').val( )
+    }
+
+    $.ajax({
+      url: "/updatePost",
+      type: "PUT",
+      data: recipeDetails, 
+      success: (result) => {
+        swal("Recipe Details Updated successfully!", {
+          icon: "success",
+          buttons: false
+        });
+        setTimeout(() => location.reload(), 1000);
+      }
+    });
+  })
 
   $('.card-alert > button').on('click', function(){
     if(!$('#message').hasClass('hide')) {
