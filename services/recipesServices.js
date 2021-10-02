@@ -29,10 +29,23 @@ const getRecipes = (req, res) => {
 }
 
 //Update Recipe Service
-const updateRecipeService = (req, res) => {    
-    console.log(req.body)
-    let { id, description, video_url } = req.body;
-    Recipes.findOneAndUpdate({_id: id}, {$set: { description, video_url}})
+const updateRecipeService = (req, res) => {
+    let { id, brief_description, description, video_url } = req.body;
+    Recipes.findOneAndUpdate({_id: id}, {$set: { brief_description, description, video_url}})
+        .then(records => {
+            if(!records) {
+                res.json({status: 400, message:"No Recipes Found!"});
+            } else {
+                res.json({statusCode: 200, message:"Success", data: records});
+            }
+        })        
+        .catch(err => console.log(err));
+}
+
+//Delete Recipe Service
+const deleteRecipeService = (req, res) => {    
+    let { id } = req.body;
+    Recipes.deleteOne({_id: id})
         .then(records => {
             if(!records) {
                 res.json({status: 400, message:"No Recipes Found!"});
@@ -46,5 +59,6 @@ const updateRecipeService = (req, res) => {
 module.exports = {
     insertRecipe, 
     getRecipes,
-    updateRecipeService
+    updateRecipeService,
+    deleteRecipeService
 }

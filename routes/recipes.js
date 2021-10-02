@@ -15,6 +15,10 @@ router.put("/updatePost", (req, res) => {
     controllers.updateRecipeController.updateRecipe(req, res);    
 });
 
+router.delete("/deletePost", (req, res) => {
+    controllers.deleteRecipeController.deleteRecipe(req, res);    
+});
+
 router.get("/about", function (request, response) {
     response.sendFile('/about.html', { root: path.join(__dirname, "..",  "public" )});
 });

@@ -92,6 +92,7 @@ const viewRecipe = (event) => {
   selectedRecipe = userRecipes[selectedRecipePos]
 
   $('#viewRecipeTitle')[0].innerHTML = selectedRecipe.title;
+  $('#viewRecipeBriefDescription').val(selectedRecipe.brief_description);
   $('#viewRecipeDescription').val(selectedRecipe.description);
   $('#viewRecipeVideo_url').val(selectedRecipe.video_url);
 
@@ -131,6 +132,12 @@ const submitForm = () => {
       success: (result) => {
           let modalInstance = M.Modal.getInstance($(".modal"));
           modalInstance.close();
+          
+          swal("Recipe Added successfully!", {
+            icon: "success",
+            buttons: false
+          });
+          setTimeout(() => location.reload(), 1000);
         }
       });
       
@@ -153,10 +160,11 @@ $(document).ready(function(){
 
   $('#updateRecipe').click((event) => {
     event.preventDefault();
-    
+
     let RecipeID = selectedRecipe._id;
     let recipeDetails = {
-      id: RecipeID,
+      id: RecipeID,      
+      brief_description: $('#viewRecipeBriefDescription').val(),
       description: $('#viewRecipeDescription').val(),
       video_url: $('#viewRecipeVideo_url').val( )
     }
@@ -175,12 +183,43 @@ $(document).ready(function(){
     });
   })
 
+  $('#deleteRecipe').click((event) => {
+    event.preventDefault();
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this Recipe!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          let RecipeID = selectedRecipe._id;
+          let recipeDetails = {
+            id: RecipeID
+          }
+
+          $.ajax({
+            url: "/deletePost",
+            type: "DELETE",
+            data: recipeDetails, 
+            success: (result) => {
+              swal("Recipe Deleted successfully!", {
+                icon: "success",
+                buttons: false
+              });
+              setTimeout(() => location.reload(), 1000);
+            }
+          });
+        }
+      })
+  });
+
   $('.card-alert > button').on('click', function(){
     if(!$('#message').hasClass('hide')) {
       $('#message').addClass('hide');
     }
     $(this).closest('div.card-alert').fadeOut('slow');
-  })
+  });
 
   $.ajax({
     url: "/posts",
