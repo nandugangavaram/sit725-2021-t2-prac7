@@ -191,7 +191,8 @@ const submitForm = () => {
           setTimeout(() => location.reload(), 1000);
         }
       });
-      
+    
+    socket.emit("BroadcastCreatePost", formData.title);
     socket.emit("Broadcast", "A User Added a Post!");
     let post = [formData];
     generatePosts(post);
@@ -201,7 +202,6 @@ const submitForm = () => {
 }
 
 $(document).ready(function(){  
-
   $('#formSubmit').click(()=>{
     submitForm();
   });
@@ -257,6 +257,10 @@ $('#sendMessage').click((e) => {
       $('#chatMessage').val('');
       $('#messagesContainer').prepend(`<p class='message'>You : ${message}</p>`);
   }
+});
+
+socket.on('CreatePost', (chatMessage) => {
+  M.toast({html: 'A User added a Post with title ' + chatMessage});
 });
 
 socket.on('message', (chatMessage) => {

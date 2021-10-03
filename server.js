@@ -47,6 +47,10 @@ io.on('connection', (socket) => {
     socket.emit('dateTime', "Current Date & Time is: ");
   }, 5000);
 
+  socket.on('BroadcastCreatePost', (msg) => {
+    socket.broadcast.emit('CreatePost', msg);
+  });
+
   socket.on('Broadcast', (msg) => {
     console.log(msg);
     socket.broadcast.emit('message', msg);
