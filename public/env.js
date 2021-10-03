@@ -6,11 +6,11 @@ var selectedRecipe;
 socket.on('dateTime', (msg) => {
   let currentdate = new Date(); 
   console.log(msg + currentdate.getDate() + "/"
-  + (currentdate.getMonth()+1)  + "/" 
+  + String(currentdate.getMonth()+1).padStart(2, '0')  + "/" 
   + currentdate.getFullYear() + " @ "  
-  + currentdate.getHours() + ":"  
-  + currentdate.getMinutes() + ":" 
-  + currentdate.getSeconds());
+  + String(currentdate.getHours()).padStart(2, '0') + ":"  
+  + String(currentdate.getMinutes()).padStart(2, '0') + ":" 
+  + String(currentdate.getSeconds()).padStart(2, '0'));
 });
 
 socket.on('message', (msg) => {
@@ -206,8 +206,12 @@ $(document).ready(function(){
     submitForm();
   });
   
+  $('.Send-Message').toggle();
+
   $('.modal').modal();
   $('#viewRecipeModal').modal();
+  $('#chatBubble').modal();
+  $('.fixed-action-btn').floatingActionButton();
 
   $('#updateRecipe').click((event) => {
     event.preventDefault();
@@ -236,4 +240,46 @@ $(document).ready(function(){
     }
   });
 
+});
+
+
+socket.on('user', (user) => {
+  console.log(`Broadcast Message: ${user.Message}`);
+  $('#messagesContainer').prepend(`<p class='message'>${user.Message}</p>`);
+});
+
+$('#sendMessage').click((e) => {
+  e.preventDefault();
+  let message = $('#chatMessage').val();
+
+  if (message) {
+      socket.emit('userMessage', message);
+      $('#chatMessage').val('');
+      $('#messagesContainer').prepend(`<p class='message'>You : ${message}</p>`);
+  }
+});
+
+socket.on('message', (chatMessage) => {
+  console.log(chatMessage);
+  let currentdate = new Date(); 
+  let currentDateTime = currentdate.getDate() + "/"
+  + String(currentdate.getMonth()+1).padStart(2, '0')  + "/" 
+  + currentdate.getFullYear() + " @ "  
+  + String(currentdate.getHours()).padStart(2, '0') + ":"  
+  + String(currentdate.getMinutes()).padStart(2, '0') + ":" 
+  + String(currentdate.getSeconds()).padStart(2, '0');
+  $('#messagesContainer').prepend(`<p class='message'>${currentDateTime} From ${chatMessage.Name} : ${chatMessage.Message}</p >`);
+});
+
+
+$('#addName').click((e) => {
+  e.preventDefault();
+  var userName = $('#name').val();
+
+  if (userName) {
+      socket.emit('addUser', userName);
+      $('#name').val('');
+      $('.Join-Form').toggle();
+      $('.Send-Message').toggle();
+  }
 });

@@ -87,3 +87,12 @@ main {
   color: inherit;
   text-decoration: underline;
 }
+
+.chatPopUp {
+  left: 23px;
+  width: max-content;
+}
+
+.fixed-action-btn {
+  bottom: 70px;
+}
