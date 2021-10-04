@@ -4,13 +4,7 @@ var userRecipes;
 var selectedRecipe;
 
 socket.on('dateTime', (msg) => {
-  let currentdate = new Date(); 
-  console.log(msg + currentdate.getDate() + "/"
-  + String(currentdate.getMonth()+1).padStart(2, '0')  + "/" 
-  + currentdate.getFullYear() + " @ "  
-  + String(currentdate.getHours()).padStart(2, '0') + ":"  
-  + String(currentdate.getMinutes()).padStart(2, '0') + ":" 
-  + String(currentdate.getSeconds()).padStart(2, '0'));
+  console.log(msg + getCurrentDateTime());
 });
 
 socket.on('message', (msg) => {
@@ -245,7 +239,8 @@ $(document).ready(function(){
 
 socket.on('user', (user) => {
   console.log(`Broadcast Message: ${user.Message}`);
-  $('#messagesContainer').prepend(`<p class='message'>${user.Message}</p>`);
+  let currentDateTime = getCurrentDateTime();
+  $('#messagesContainer').prepend(`<p class='message'><b>${currentDateTime}</b> ${user.Message}</p>`);
 });
 
 $('#sendMessage').click((e) => {
@@ -255,7 +250,8 @@ $('#sendMessage').click((e) => {
   if (message) {
       socket.emit('userMessage', message);
       $('#chatMessage').val('');
-      $('#messagesContainer').prepend(`<p class='message'>You : ${message}</p>`);
+      let currentDateTime = getCurrentDateTime();
+      $('#messagesContainer').prepend(`<p class='message'><b>${currentDateTime}</b> You : ${message}</p>`);
   }
 });
 
@@ -265,14 +261,8 @@ socket.on('CreatePost', (chatMessage) => {
 
 socket.on('message', (chatMessage) => {
   console.log(chatMessage);
-  let currentdate = new Date(); 
-  let currentDateTime = currentdate.getDate() + "/"
-  + String(currentdate.getMonth()+1).padStart(2, '0')  + "/" 
-  + currentdate.getFullYear() + " @ "  
-  + String(currentdate.getHours()).padStart(2, '0') + ":"  
-  + String(currentdate.getMinutes()).padStart(2, '0') + ":" 
-  + String(currentdate.getSeconds()).padStart(2, '0');
-  $('#messagesContainer').prepend(`<p class='message'>${currentDateTime} From ${chatMessage.Name} : ${chatMessage.Message}</p >`);
+  let currentDateTime = getCurrentDateTime();
+  $('#messagesContainer').prepend(`<p class='message'><b>${currentDateTime}</b> From ${chatMessage.Name} : ${chatMessage.Message}</p >`);
 });
 
 
@@ -285,5 +275,18 @@ $('#addName').click((e) => {
       $('#name').val('');
       $('.Join-Form').toggle();
       $('.Send-Message').toggle();
+      let currentDateTime = getCurrentDateTime();
+      $('#messagesContainer').prepend(`<p class='message'><b>${currentDateTime}</b> You joined the Chat!</p>`);
   }
 });
+
+const getCurrentDateTime = function() {
+  let currentdate = new Date(); 
+  return (currentdate.getDate() + "/"
+  + String(currentdate.getMonth()+1).padStart(2, '0')  + "/" 
+  + currentdate.getFullYear() + "@"  
+  + String(currentdate.getHours()).padStart(2, '0') + ":"  
+  + String(currentdate.getMinutes()).padStart(2, '0') + ":" 
+  + String(currentdate.getSeconds()).padStart(2, '0'));
+  
+}
