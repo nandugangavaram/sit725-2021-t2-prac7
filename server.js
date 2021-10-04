@@ -1,5 +1,5 @@
 require("dotenv").config();
-const mongo = require('./dbconnect')
+const mongo = require('./dbConnect')
 let express = require("express");
 let app = express();
 

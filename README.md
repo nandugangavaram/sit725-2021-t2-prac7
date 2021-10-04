@@ -1,4 +1,4 @@
-# sit725-2021-t2-prac6
+# sit725-2021-t2-prac7
 
 # Indian Cookery
     This project is about providing people who are craving to try indian food can go through the available recipes or 
