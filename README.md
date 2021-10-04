@@ -1,13 +1,45 @@
+<p align="center">
+ <h1 align="center">Indian Cookery</h1>
+ <p align="center">For all passionate people who want to share and learn Indian Cuisines</p>
+</p>
+  <p align="center">
+<img alt="js" src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+<img alt="js" src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white"/>
+<img alt="express" src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
+<img alt="html5" src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/>
+<img alt="css" src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"/>
+<img alt="mongodb" src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/>
+</p>
+
 # sit725-2021-t2-prac7
 
-# Indian Cookery
     This project is about providing people who are craving to try indian food can go through the available recipes or 
     can even post new recipes on their own, sharing their own recipes with never tried before incrediants which taste good.
 
-Install all the dependencies by running `npm install`.
+# Wireframes 
 
-After installing, run the server using `npm start`.
+The wireframes created for this application are available in `https://github.com/nandugangavaram/sit725-2021-t2-prac4/tree/master/docs` folder with the name `IndianCookery.pdf`.
 
+# Cloning the Repository
+
+Get this repo to your local systems by running the following command:
+```
+git clone https://github.com/nandugangavaram/sit725-2021-t2-prac7
+```
+
+# Installing required Modules
+
+Install all the dependencies by running the following command:
+```
+npm install
+```
+
+# Running the Application
+
+After installing, run the server using the following command: 
+```
+npm start
+```
 
 
 If instead, you get something like the following, someone is already
@@ -92,4 +124,15 @@ started.
 
 In order to run test cases, and see the results run the below command in the terminal:
 
-`npm run test`
+```
+npm run test
+```
+
+## Docker Public Repository
+-------------------------------------------------------------------------------
+
+In order to get the latest docker build of the application you can use the below command to pull the repo:
+
+```
+docker pull nandugangavaram/indiancookery
+```
