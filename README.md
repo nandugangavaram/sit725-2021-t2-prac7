@@ -72,18 +72,7 @@ The server written with node.js.
 
 In this case, the contents of the file are:
 
-    node_modules
-
----
-
-`.gitignore`
-
-List of file patterns that should **NOT** be stored in git.  If you aren't using
-git, you don't need this file.  And the contents are personal preference.
-
-See the npm google groups topic
-*['node_modules in git' from FAQ](https://groups.google.com/forum/#!topic/npm-/8SRXhD6uMmk)*
-for discussion.
+    sit725-2021-t2-prac7
 
 ---
 
@@ -104,7 +93,6 @@ Standard package.json file for node packages.  You will need this file for two
 reasons:
 
 * identify your node package dependencies during `npm install`
-* identify to Bluemix that this directory contains a node.js application
 
 See the npm doc
 *[package.json](https://npmjs.org/doc/json.html)*
@@ -112,12 +100,6 @@ for more information.
 
 ---
 
-In this case, the file has a single line:
-
-    web: node server
-
-This indicates that the command `node server` should be run when the app is
-started.
 
 ## Running Test cases
 -------------------------------------------------------------------------------
